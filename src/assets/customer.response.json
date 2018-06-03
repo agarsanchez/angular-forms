@@ -1,0 +1,12 @@
+{
+  "name": "This is customer name from service!",
+  "addresses": [
+    {
+      "postcode": "MK9 1BB",
+      "street": "Grafton Street"
+    },{
+      "postcode": "MK5 6ES",
+      "street": "Shenly Church"
+    }
+  ]
+}

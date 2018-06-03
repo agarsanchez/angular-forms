@@ -1,20 +1,26 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value)">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" formControlName="name">
+    <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+      Name is required (minimum 5 characters).
+    </small>
+  </div>
 
+  <div formArrayName="addresses">
+    <div *ngFor="let address of myForm.controls.addresses.controls; let i=index">
+      <div>
+        <span>Address {{i + 1}}</span>
+        <button *ngIf="myForm.controls.addresses.controls.length > 1" (click)="removeAddress(i)">delete</button>
+      </div>
+
+      <div [formGroupName]="i">
+        <app-address [group]="myForm.controls.addresses.controls[i]"></app-address>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button type="button" (click)="addAddress()">Add another address</button>
+  </div>
+  <button type="submit" [disabled]="!myForm.valid">Submit</button>
+</form>
