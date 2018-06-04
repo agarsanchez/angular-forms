@@ -21,7 +21,6 @@ describe('AddressComponent', () => {
   });
 
   it('should create', () => {
-    console.log('testing: _________');
     expect(component).toBeTruthy();
   });
 });

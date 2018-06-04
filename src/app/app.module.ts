@@ -1,11 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { AddressComponent } from './address/address.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {HttpModule} from '@angular/http';
+import {AddressComponent} from './address/address.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,4 +19,5 @@ import {HttpModule} from '@angular/http';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

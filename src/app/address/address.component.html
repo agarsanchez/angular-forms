@@ -1,9 +1,9 @@
 <fieldset
-  [formGroup]="adressForm">
+  [formGroup]="group">
   <div class="form-group col-xs-6">
     <label>street</label>
     <input type="text" class="form-control" formControlName="street">
-    <small [hidden]="adressForm.controls.street.valid" class="text-danger">
+    <small [hidden]="group.controls.street.valid" class="text-danger">
       Street is required
     </small>
   </div>
